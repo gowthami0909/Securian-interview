@@ -1,5 +1,5 @@
-import { actorCalled, Duration, Wait } from '@serenity-js/core';
-import {  Enter, Text, Navigate, Press, isVisible, ExecuteScript, Clear, Click, Scroll, isClickable } from '@serenity-js/web';
+import { actorCalled, Wait } from '@serenity-js/core';
+import {  Text, Navigate, Press, isVisible, ExecuteScript, Clear, isClickable } from '@serenity-js/web';
 import {  Ensure, equals } from '@serenity-js/assertions';
 
 import  { Securian}  from '../pages/Securian.js';
@@ -55,6 +55,7 @@ describe('Retirement Calculator - Positive cases', () => {
         Ensure.that(
           Text.of(securian.preRetirementCalculator.calculatorHeader), 
           equals('Pre-retirement calculator')),
+         // Clear prior saved values  
         Clear.theValueOf(securian.preRetirementCalculator.currentAge),
         Clear.theValueOf(securian.preRetirementCalculator.retirementAge),
         Clear.theValueOf(securian.preRetirementCalculator.currentIncome),

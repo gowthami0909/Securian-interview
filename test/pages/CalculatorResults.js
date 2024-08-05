@@ -1,4 +1,4 @@
-import { By, ExecuteScript, PageElement } from '@serenity-js/web';
+import { By, PageElement } from '@serenity-js/web';
 
 
 export class CalculatorResults {

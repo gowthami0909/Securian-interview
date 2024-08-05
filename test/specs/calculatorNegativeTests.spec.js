@@ -1,5 +1,5 @@
-import { actorCalled, Duration, Wait } from '@serenity-js/core';
-import { Enter, Text, Navigate, Press, isVisible, ExecuteScript, Clear, Click, Scroll, isClickable } from '@serenity-js/web';
+import { actorCalled } from '@serenity-js/core';
+import { Enter, Text, Navigate, ExecuteScript, Clear } from '@serenity-js/web';
 import { Ensure, equals } from '@serenity-js/assertions';
 import { Securian } from '../pages/Securian.js';
 
@@ -11,16 +11,15 @@ describe('Retirement Calculator - Positive cases', () => {
     const actor = actorCalled('Gowthami');
     await actor.attemptsTo(Navigate.to(baseUrl));
     await securian.getCalculatorFormFilled(actor);
-    await actor.attemptsTo(
-        
-      //Submit w/o current age and check the alert
+    await actor.attemptsTo(  
+          //Submit w/o current age and check the alert
         Clear.theValueOf(securian.preRetirementCalculator.currentAge),
         ExecuteScript.sync(securian.preRetirementCalculator.scriptSelectorForCalculateButton),
         Ensure.that(
           Text.of(securian.preRetirementCalculator.requiredFieldAlert), 
           equals('Please fill out all required fields')),
           Enter.theValue('30').into(securian.preRetirementCalculator.currentAge),
-          
+  
           //Submit w/o retirement age and check the alert
           Clear.theValueOf(securian.preRetirementCalculator.retirementAge),
           ExecuteScript.sync(securian.preRetirementCalculator.scriptSelectorForCalculateButton),
